@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+这是一个使用 Vite 和 TypeScript 的 React 项目，具体模仿了 apple 的前端页面。
+使用 npm install 安装依赖，然后使用 npm run dev 启动项目。
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
