@@ -60,7 +60,7 @@ const Specialist: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
 
         <Container ref={containerRef}>
           {' '}
-          <NewContainer backgroundImage={backGroundImages[0]}>
+          <NewContainer $backgroundImage={backGroundImages[0]}>
             {' '}
             <div className="content">
               {' '}
@@ -68,7 +68,7 @@ const Specialist: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h1>Specialist 专家可在线一对一帮你选购。</h1>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[1]}>
+          <NewContainer $backgroundImage={backGroundImages[1]}>
             {' '}
             <div className="content">
               <h3>TODAY AT APPLE</h3>
@@ -76,7 +76,7 @@ const Specialist: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h2>了解各种最新功能以及如何充分运用 Apple 设备</h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[2]}>
+          <NewContainer $backgroundImage={backGroundImages[2]}>
             {' '}
             <div className="content">
               <h3>个人设置辅导</h3>
@@ -86,7 +86,7 @@ const Specialist: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               </h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[3]}>
+          <NewContainer $backgroundImage={backGroundImages[3]}>
             {' '}
             <div className="content">
               <h1>来 Genius Bar 天才吧，</h1>

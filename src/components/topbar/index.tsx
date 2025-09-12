@@ -25,8 +25,12 @@ const TopBar: FC<Iprops> = () => {
           <li>
             <Link to="/mac">Mac</Link>
           </li>
-          <li>iPad</li>
-          <li>iPhone</li>
+          <li>
+            <Link to="/ipad">iPad</Link>
+          </li>
+          <li>
+            <Link to="/iphone">iphone</Link>
+          </li>
           <li>Watch</li>
           <li>AirPods</li>
           <li>家居</li>

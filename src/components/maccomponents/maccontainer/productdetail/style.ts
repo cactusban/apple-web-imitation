@@ -9,10 +9,12 @@ export const Container = styled.div`
     align-items: center;
     margin-top: 50px;
     h1 {
+      margin-top: 50px;
       font-size: 50px;
       font-weight: 550;
     }
     h3 {
+      margin-top: 50px;
       color: #0070c9;
       font-weight: 350;
       font-size: 16px;
@@ -23,3 +25,10 @@ export const Container = styled.div`
     }
   }
 `
+export const ProductContainer = styled.div`
+  .tab-navigation {
+    .tab-button {
+    }
+  }
+`
+export const ProductDetail = styled.div``

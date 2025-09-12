@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 interface CardWrapperProps {
-  backgroundImage: string
+  $backgroundImage?: string
 }
 
 export const NewContainer = styled.div<CardWrapperProps>`
   height: 500px;
   min-width: 425px;
   border-radius: 16px;
-  background-image: url(${({ backgroundImage }) => backgroundImage});
+  background-image: url(${({ $backgroundImage }) => $backgroundImage});
   background-size: cover;
   background-position: center;
   overflow: hidden;

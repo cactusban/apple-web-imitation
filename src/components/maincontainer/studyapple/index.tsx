@@ -61,7 +61,7 @@ const Study: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
 
         <Container ref={containerRef}>
           {' '}
-          <NewContainer backgroundImage={backGroundImages[0]}>
+          <NewContainer $backgroundImage={backGroundImages[0]}>
             {' '}
             <div className="white">
               {' '}
@@ -70,7 +70,7 @@ const Study: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h2>Mac 和 iPad 在手，助你攻克各门学业，课外项目也游刃有余</h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[1]}>
+          <NewContainer $backgroundImage={backGroundImages[1]}>
             {' '}
             <div className="content">
               <h3>APPLE EDUCATION COMMUNITY</h3>
@@ -78,7 +78,7 @@ const Study: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h2>通过 APPLE 获取免费的教学资源和新的灵感</h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[2]}>
+          <NewContainer $backgroundImage={backGroundImages[2]}>
             {' '}
             <div className="content">
               <h3></h3>
@@ -89,7 +89,7 @@ const Study: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               </h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[3]}>
+          <NewContainer $backgroundImage={backGroundImages[3]}>
             {' '}
             <div className="content">
               <h3>学习构建APP</h3>
@@ -97,7 +97,7 @@ const Study: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h2>从写下第一行代码到创建第一个app，这些工具一路挺你</h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[4]}>
+          <NewContainer $backgroundImage={backGroundImages[4]}>
             {' '}
             <div className="content">
               <h3></h3>

@@ -56,7 +56,7 @@ const Try: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
 
         <Container ref={containerRef}>
           {' '}
-          <NewContainer backgroundImage={backGroundImages[0]}>
+          <NewContainer $backgroundImage={backGroundImages[0]}>
             {' '}
             <div className="content">
               {' '}
@@ -68,7 +68,7 @@ const Try: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               </h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[1]}>
+          <NewContainer $backgroundImage={backGroundImages[1]}>
             {' '}
             <div className="content">
               <h3></h3>
@@ -76,7 +76,7 @@ const Try: FC<Iprops> = ({ backGroundImages = BackGroundIMG.url }) => {
               <h2>学生可享优惠价。</h2>
             </div>
           </NewContainer>
-          <NewContainer backgroundImage={backGroundImages[2]}>
+          <NewContainer $backgroundImage={backGroundImages[2]}>
             {' '}
             <div className="content">
               <h3>ICLOUD+</h3>

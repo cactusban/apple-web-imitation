@@ -13,7 +13,6 @@ const MacComponent: FC<Iprops> = () => {
       <MacVidieo></MacVidieo>
       <MacCard></MacCard>
       <MacCompre />
-      <MacCompre></MacCompre>
       <ProductDetail></ProductDetail>
     </div>
   )
