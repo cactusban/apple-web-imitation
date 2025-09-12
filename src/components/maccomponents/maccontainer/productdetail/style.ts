@@ -27,6 +27,12 @@ export const Container = styled.div`
 `
 export const ProductContainer = styled.div`
   .tab-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 4px;
     .tab-button {
     }
   }

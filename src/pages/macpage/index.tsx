@@ -1,22 +1,24 @@
-import type { FC, ReactNode } from 'react'
-import { Container } from './style'
-import FootBar from '../../components/footbar'
-import Footer from '../../components/footer'
-import MacTopBar from '../../components/maccomponents/mactopbar'
-import MacIntro from '../../components/maccomponents/macintro'
-import MacComponent from '../../components/maccomponents/maccontainer'
+import { lazy, type FC, type ReactNode } from 'react'
+const FootBar = lazy(() => import('../../components/footbar'))
+const Footer = lazy(() => import('../../components/footer'))
+const MacTopBar = lazy(() => import('../../components/maccomponents/mactopbar'))
+const MacIntro = lazy(() => import('../../components/maccomponents/macintro'))
+const MacComponent = lazy(
+  () => import('../../components/maccomponents/maccontainer')
+)
+
 interface Iprops {
   children?: ReactNode
 }
 const MacPage: FC<Iprops> = () => {
   return (
-    <Container>
+    <>
       <MacTopBar></MacTopBar>
       <MacIntro></MacIntro>
       <MacComponent></MacComponent>
       <Footer></Footer>
       <FootBar></FootBar>
-    </Container>
+    </>
   )
 }
 export default MacPage

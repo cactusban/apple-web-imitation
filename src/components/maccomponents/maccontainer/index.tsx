@@ -1,8 +1,8 @@
-import type { FC, ReactNode } from 'react'
-import MacVidieo from './macvidieo'
-import MacCard from './maccard'
-import MacCompre from './maccompre'
-import ProductDetail from './productdetail'
+import { lazy, memo, type FC, type ReactNode } from 'react'
+const MacVidieo = lazy(() => import('./macvidieo'))
+const MacCard = lazy(() => import('./maccard'))
+const MacCompre = lazy(() => import('./maccompre'))
+const ProductDetail = lazy(() => import('./productdetail'))
 interface Iprops {
   children?: ReactNode
 }
@@ -18,4 +18,4 @@ const MacComponent: FC<Iprops> = () => {
   )
 }
 
-export default MacComponent
+export default memo(MacComponent)

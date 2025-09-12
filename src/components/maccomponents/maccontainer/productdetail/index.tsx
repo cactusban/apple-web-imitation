@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { memo, type ReactNode } from 'react'
 import { Container, ProductContainer } from './style'
 
 interface Iprops {
@@ -19,10 +19,9 @@ const ProductDetail: React.FC<Iprops> = () => {
             <div className="tab-button">台式电脑</div>
             <div className="tab-button">显示器</div>
           </div>
-          <ProductDetail></ProductDetail>
         </ProductContainer>
       </Container>
     </>
   )
 }
-export default ProductDetail
+export default memo(ProductDetail)

@@ -1,7 +1,6 @@
 import { Navigate, type RouteObject } from 'react-router-dom'
 
 import { lazy } from 'react'
-import BuyIpadPage from '../pages/buyipadairpage'
 import BuyIpadAirPage from '../pages/buyipadairpage'
 const Shop = lazy(() => import('../pages/shop'))
 const MacPage = lazy(() => import('../pages/macpage'))
