@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react'
-import BuyPage from '../../components/buypage'
+import BuyPage from '../../components/buypage/buyIpadpage'
 interface Iprops {
   children?: ReactNode
 }

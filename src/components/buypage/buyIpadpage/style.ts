@@ -94,7 +94,10 @@ export const BuyDetail = styled.div`
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
-
+        &.active {
+          border-color: #0071e3;
+          box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        }
         &:hover {
           border-color: #0071e3;
           box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
@@ -144,7 +147,10 @@ export const BuyDetail = styled.div`
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
-
+        &.active {
+          border-color: #0071e3;
+          box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        }
         &:hover {
           border-color: #0071e3;
           box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
@@ -180,7 +186,10 @@ export const BuyDetail = styled.div`
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
-
+        &.active {
+          border-color: #0071e3;
+          box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        }
         &:hover {
           border-color: #0071e3;
           box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
@@ -210,7 +219,51 @@ export const BuyDetail = styled.div`
     }
 
     .web {
-      height: 200px;
+       .webdes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border: 1px solid #d2d2d7;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &.active {
+          border-color: #0071e3;
+          box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        }
+        &:hover {
+          border-color: #0071e3;
+          box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        }
+
+        .lefttype {
+          font-weight: 400;
+          width:200px;
+          color: #1d1d1f;
+          h2{
+          font-size: 14px;
+          font-weight: 500;
+          }
+          h3{
+          font-size: 11px;
+          font-weight: 300;}
+        }
+
+        .righttype {
+          text-align: right;
+
+          h3 {
+            font-size: 12px;
+            font-weight: 400;
+            margin: 2px 0;
+
+
+          }
+        }
+      }
+    }
     }
   }
 
@@ -239,6 +292,114 @@ export const BuyDetail = styled.div`
     &.active {
       height: 40px;
       background-color: #1d1d1f;
+    }
+  }
+`
+export const Package = styled.div`
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  margin: 130px auto;
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+  .pic {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 800px;
+    margin: 0 auto;
+
+    background-color: #f5f5f7;
+    img {
+      height: 339px;
+    }
+  }
+`
+export const Compare = styled.div`
+  h1 {
+    width: 1200px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      .title {
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+        border-bottom: 1px solid rgb(122, 122, 122);
+        h2 {
+          width: 110px;
+          text-align: center;
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+        h3 {
+          width: 110px;
+          text-align: center;
+          font-size: 12px;
+          margin-bottom: 30px;
+          font-weight: 300;
+        }
+      }
+      img {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        max-width: 196px;
+        max-height: 199px;
+        margin-bottom: 50px;
+      }
+      h2 {
+        font-size: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      h3 {
+        font-size: 11px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 56px;
+          height: 56px;
+          margin-bottom: 10px;
+        }
+        h3 {
+          font-size: 11px;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 `
