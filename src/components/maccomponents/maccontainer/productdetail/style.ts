@@ -206,7 +206,7 @@ export const FloatingMenu = styled.div`
   position: fixed;
   left: 0;
   height: 130px;
-  width: 100%;
+  width: 94%;
   background: #f5f5f5;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -223,7 +223,7 @@ export const FloatingMenu = styled.div`
   .container {
     display: flex;
     width: 65%;
-    margin-left: 40px;
+    margin-left: 30px;
     margin-top: 20px;
     justify-content: space-around;
     .content {
