@@ -1,4 +1,5 @@
 import { lazy, memo, type FC, type ReactNode } from 'react'
+import MacPartner from './macPartner'
 const MacVidieo = lazy(() => import('./macvidieo'))
 const MacCard = lazy(() => import('./maccard'))
 const MacCompre = lazy(() => import('./maccompre'))
@@ -14,6 +15,7 @@ const MacComponent: FC<Iprops> = () => {
       <MacCard></MacCard>
       <MacCompre />
       <ProductDetail></ProductDetail>
+      <MacPartner></MacPartner>
     </div>
   )
 }

@@ -34,7 +34,7 @@ const ProductDetail: React.FC<Iprops> = () => {
       }
       if (downRef.current) {
         const downRect = downRef.current.getBoundingClientRect()
-        if (downRect.top <= 50) {
+        if (downRect.top <= 0) {
           setShowMenu(false)
         }
       }

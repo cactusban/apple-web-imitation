@@ -27,6 +27,7 @@ export const Container = styled.div`
 `
 export const ProductContainer = styled.div`
   transition: all 0.3s ease;
+  padding-bottom: 80px;
   .tab-navigation {
     position: relative;
     display: flex;
