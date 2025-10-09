@@ -1,10 +1,12 @@
 import type { FC, ReactNode } from 'react'
 import { ContainerStyle, PlayBtnStyle, VideoContainerStyle } from './style'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
+
 interface Iprops {
   children?: ReactNode
 }
-const IpadVidieo: FC<Iprops> = () => {
+
+const IpadVideo: FC<Iprops> = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -13,8 +15,6 @@ const IpadVidieo: FC<Iprops> = () => {
   const [videoBorderRadius, setVideoBorderRadius] = useState(0)
   const [playBtnPosition, setPlayBtnPosition] = useState({ x: 90, y: 10 })
 
-  const animationFrameId = useRef<number | null>(null)
-  const lastScrollTime = useRef<number>(0)
   // 控制视频播放/暂停
   const controlVideo = useCallback(() => {
     if (videoRef.current) {
@@ -40,7 +40,7 @@ const IpadVidieo: FC<Iprops> = () => {
         })
       },
       {
-        threshold: 0.2, // 当元素10%进入视口时触发
+        threshold: 0.2,
       }
     )
 
@@ -64,9 +64,9 @@ const IpadVidieo: FC<Iprops> = () => {
       const containerTop = rect.top
       const containerBottom = rect.bottom
       const containerHeight = rect.height
+
       // 当容器完全在视口中时
       if (containerTop >= 0 && containerBottom <= windowHeight) {
-        // 视频占100vw
         setVideoScale(1)
         setVideoBorderRadius(50)
         setPlayBtnPosition({ x: 90, y: 10 })
@@ -77,17 +77,15 @@ const IpadVidieo: FC<Iprops> = () => {
         let progress = 0
 
         if (containerTop < 0) {
-          // 向下滚动
           progress = Math.min(Math.abs(containerTop) / containerHeight, 1)
         }
 
-        // 视频缩放从100vw到80vw (scale从1到0.8)
         const scale = 1 - progress * 0.2
         setVideoScale(Math.max(scale, 0.9))
         setVideoBorderRadius(progress * 100)
-        // 播放按钮从右上角移动到右下角
-        const btnX = 90 // X轴保持在右侧
-        const btnY = 10 + progress * 80 // Y轴从10%移动到90%
+
+        const btnX = 90
+        const btnY = 10 + progress * 80
         setPlayBtnPosition({
           x: btnX,
           y: Math.min(btnY, 90),
@@ -96,16 +94,17 @@ const IpadVidieo: FC<Iprops> = () => {
     }
 
     window.addEventListener('scroll', handleScroll)
-    handleScroll() // 初始化
+    handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <ContainerStyle ref={containerRef}>
+      {/* 使用 transient props（$ 前缀） */}
       <VideoContainerStyle
-        videoScale={videoScale}
-        videoBorderRadius={videoBorderRadius}
+        $videoScale={videoScale}
+        $videoBorderRadius={videoBorderRadius}
       >
         {isVisible && (
           <video
@@ -125,12 +124,13 @@ const IpadVidieo: FC<Iprops> = () => {
           </video>
         )}
 
-        {/* 播放按钮 */}
-        <PlayBtnStyle playBtnPosition={playBtnPosition} onClick={controlVideo}>
+        {/* 使用 transient props（$ 前缀） */}
+        <PlayBtnStyle $playBtnPosition={playBtnPosition} onClick={controlVideo}>
           <h1>{isPlaying ? '❚❚' : '▶'}</h1>
         </PlayBtnStyle>
       </VideoContainerStyle>
     </ContainerStyle>
   )
 }
-export default memo(IpadVidieo)
+
+export default memo(IpadVideo)
