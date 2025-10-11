@@ -7,11 +7,15 @@ const Watch = lazy(() => import('../pages/watchPage'))
 const MacPage = lazy(() => import('../pages/macpage'))
 const IphonePage = lazy(() => import('../pages/iphonepage'))
 const IpadPage = lazy(() => import('../pages/ipadpage'))
-
+const Login = lazy(() => import('../pages/login'))
 const routes: RouteObject[] = [
   {
     path: '/',
     element: <Navigate to="/shop"></Navigate>,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '/mac',

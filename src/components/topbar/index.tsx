@@ -15,7 +15,7 @@ const TopBar: FC<Iprops> = () => {
       <TopBarWrapper>
         <ul>
           <li>
-            <Link to="/">
+            <Link to="/login">
               <AppleFilled />
             </Link>
           </li>
