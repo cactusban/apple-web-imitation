@@ -17,7 +17,16 @@ export const NewContainer = styled.div<CardWrapperProps>`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  &.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
   &:hover {
     transform: scale(1.01);
     cursor: pointer;

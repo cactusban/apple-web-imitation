@@ -23,15 +23,22 @@ const IpadPartner: FC = () => {
       img: 'https://www.apple.com.cn/assets-www/zh_CN/ipad/image_accordion/xlarge/ipad_watch_3c272d6a3_2x.jpg',
     },
   ]
-
   const [activeIndex, setActiveIndex] = useState(0)
-  const [fade, setFade] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [displayIndex, setDisplayIndex] = useState(0)
+
   const setActive = (index: number) => {
-    if (index === activeIndex) return
-    setFade(true)
+    if (index === activeIndex || isTransitioning) return
+
+    setIsTransitioning(true)
+
     setTimeout(() => {
+      setDisplayIndex(index)
       setActiveIndex(index)
-      setFade(false)
+
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 50)
     }, 300)
   }
 
@@ -62,7 +69,6 @@ const IpadPartner: FC = () => {
         >
           <div className="left">
             {data.map((item, index) => (
-              // 添加 key 属性到最外层的 div
               <div key={item.id} className="ts">
                 <div>
                   <div className="title" onClick={() => setActive(index)}>
@@ -79,9 +85,9 @@ const IpadPartner: FC = () => {
           <div className="right">
             <div className="image">
               <img
-                src={data[activeIndex]?.img}
+                src={data[displayIndex]?.img}
                 alt=""
-                className={fade ? 'fadeout' : 'fadein'}
+                className={isTransitioning ? 'fadeout' : 'fadein'}
               />
             </div>
           </div>

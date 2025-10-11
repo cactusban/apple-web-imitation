@@ -1,11 +1,15 @@
-import type { FC, ReactNode } from 'react'
-import Tips from '../../components/shopcomponents/tips'
-import ShopTop from '../../components/shopcomponents/shoptop'
-import ProductList from '../../components/maincontainer/productlist'
-import RowProduct from '../../components/shopcomponents/rowproduct'
+import { lazy, memo, type FC, type ReactNode } from 'react'
+const Tips = lazy(() => import('../../components/shopcomponents/tips'))
+const ShopTop = lazy(() => import('../../components/shopcomponents/shoptop'))
+const ProductList = lazy(
+  () => import('../../components/maincontainer/productlist')
+)
+const RowProduct = lazy(
+  () => import('../../components/shopcomponents/rowproduct')
+)
+const Footer = lazy(() => import('../../components/footer'))
+const FootBar = lazy(() => import('../../components/footbar'))
 import { Container } from './style'
-import Footer from '../../components/footer'
-import FootBar from '../../components/footbar'
 interface Iprops {
   children?: ReactNode
 }
@@ -23,4 +27,4 @@ const Shop: FC<Iprops> = () => {
     </>
   )
 }
-export default Shop
+export default memo(Shop)

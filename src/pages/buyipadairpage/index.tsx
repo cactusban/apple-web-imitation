@@ -1,5 +1,6 @@
-import type { FC, ReactNode } from 'react'
-import BuyPage from '../../components/buypage/buyIpadpage'
+import { lazy, type FC, type ReactNode } from 'react'
+const BuyPage = lazy(() => import('../../components/buypage/buyIpadpage'))
+
 interface Iprops {
   children?: ReactNode
 }

@@ -31,7 +31,9 @@ const TopBar: FC<Iprops> = () => {
           <li>
             <Link to="/iphone">iphone</Link>
           </li>
-          <li>Watch</li>
+          <li>
+            <Link to="/watch">Watch</Link>
+          </li>
           <li>AirPods</li>
           <li>家居</li>
           <li>娱乐</li>

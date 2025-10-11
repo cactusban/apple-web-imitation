@@ -1,4 +1,4 @@
-import { lazy, type FC, type ReactNode } from 'react'
+import { lazy, memo, type FC, type ReactNode } from 'react'
 const FootBar = lazy(() => import('../../components/footbar'))
 const Footer = lazy(() => import('../../components/footer'))
 const MacTopBar = lazy(() => import('../../components/maccomponents/mactopbar'))
@@ -21,4 +21,4 @@ const MacPage: FC<Iprops> = () => {
     </>
   )
 }
-export default MacPage
+export default memo(MacPage)

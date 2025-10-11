@@ -7,7 +7,6 @@ import {
   RightArrow,
 } from './style'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-
 interface Iprops {
   children?: ReactNode
 }
