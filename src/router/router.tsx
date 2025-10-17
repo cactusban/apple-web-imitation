@@ -8,6 +8,7 @@ const MacPage = lazy(() => import('../pages/macpage'))
 const IphonePage = lazy(() => import('../pages/iphonepage'))
 const IpadPage = lazy(() => import('../pages/ipadpage'))
 const Login = lazy(() => import('../pages/login'))
+import RequireAuth from './requireAuth'
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -19,7 +20,11 @@ const routes: RouteObject[] = [
   },
   {
     path: '/mac',
-    element: <MacPage />,
+    element: (
+      <RequireAuth>
+        <MacPage />
+      </RequireAuth>
+    ),
   },
   {
     path: '/shop',
@@ -27,16 +32,35 @@ const routes: RouteObject[] = [
   },
   {
     path: '/iphone',
-    element: <IphonePage />,
+    element: (
+      <RequireAuth>
+        <IphonePage />
+      </RequireAuth>
+    ),
   },
-  { path: '/ipad', element: <IpadPage /> },
+  {
+    path: '/ipad',
+    element: (
+      <RequireAuth>
+        <IpadPage />{' '}
+      </RequireAuth>
+    ),
+  },
   {
     path: '/watch',
-    element: <Watch />,
+    element: (
+      <RequireAuth>
+        <Watch />
+      </RequireAuth>
+    ),
   },
   {
     path: '/buyipadair',
-    element: <BuyIpadAirPage />,
+    element: (
+      <RequireAuth>
+        <BuyIpadAirPage />
+      </RequireAuth>
+    ),
   },
 ]
 export default routes

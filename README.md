@@ -1,3 +1,9 @@
+1:除了 shop 页，其他页面需要使用账户和密码登录，
+使用 mock-server 模仿后端，登录成功后返回 token。
+终端中运行 node mock-server/server.js 启动 mock-server。
+"email": "user@example.com",
+"password": "password123",
+
 # React + TypeScript + Vite
 
 这是一个使用 Vite 和 TypeScript 的 React 项目，具体模仿了 apple 的前端页面。
