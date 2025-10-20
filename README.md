@@ -3,6 +3,8 @@
 终端中运行 node mock-server/server.js 启动 mock-server。
 "email": "user@example.com",
 "password": "password123",
+2：共有 shop 页面，mac 页面，ipad 页面和 iphone 页面。
+3：![alt text](image.png)点击 ipaid air 可以跳转到购买页面。
 
 # React + TypeScript + Vite
 

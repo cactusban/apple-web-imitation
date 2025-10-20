@@ -169,9 +169,9 @@ export const MobileOverlay = styled.div`
     visibility: visible;
   }
 
-  // @media (min-width: ${breakpoints.mobile}) {
-  //   display: none;
-  // }
+  @media (min-width: ${breakpoints.mobile}) {
+    display: none;
+  }
 `
 
 export const MobileMenu = styled.div`
@@ -222,9 +222,9 @@ export const MobileMenu = styled.div`
     }
   }
 
-  // @media (min-width: ${breakpoints.mobile}) {
-  //   display: none;
-  // }
+  @media (min-width: ${breakpoints.mobile}) {
+    display: none;
+  }
 
   /* 自定义滚动条样式 */
   &::-webkit-scrollbar {
