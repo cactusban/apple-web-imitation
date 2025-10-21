@@ -8,6 +8,7 @@ const MacPage = lazy(() => import('../pages/macpage'))
 const IphonePage = lazy(() => import('../pages/iphonepage'))
 const IpadPage = lazy(() => import('../pages/ipadpage'))
 const Login = lazy(() => import('../pages/login'))
+const AddIpadAir = lazy(() => import('../components/buypage/addipadair'))
 import RequireAuth from './requireAuth'
 const routes: RouteObject[] = [
   {
@@ -61,6 +62,12 @@ const routes: RouteObject[] = [
         <BuyIpadAirPage />
       </RequireAuth>
     ),
+    children: [
+      {
+        path: '/ipad-air',
+        element: <AddIpadAir></AddIpadAir>,
+      },
+    ],
   },
 ]
 export default routes

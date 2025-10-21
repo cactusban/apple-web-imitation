@@ -11,8 +11,8 @@ import Footer from '../../footer'
 import FootBar from '../../footbar'
 import { Carousel } from 'antd'
 import BuyIpadPromblem from './buyIpadProblem'
-import { Top } from '../buyTopBar/style'
 import BuyTopBar from '../buyTopBar'
+import { Navigate, useNavigate } from 'react-router-dom'
 interface Iprops {
   children?: ReactNode
   buyname?: string
@@ -24,6 +24,7 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
   const rightRef = useRef<HTMLDivElement>(null)
   const sections = ['type', 'color', 'ram', 'web']
   const [size, setSize] = useState(0)
+
   const [color, setColor] = useState('')
   const [visible, setVisible] = useState(false)
 
@@ -115,10 +116,72 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
   }
   const [web, setweb] = useState('0')
   const changeWeb = (a: string) => {
-    if (ram === a) {
+    if (web === a) {
       setweb('0')
     } else {
       setweb(a)
+    }
+  }
+  const priceTable = {
+    basePrice: {
+      11: 4399,
+      13: 6099,
+    },
+    ramUpgrade: {
+      '128GB': 0,
+      '256GB': 500,
+      '512GB': 2200,
+      '1TB': 3500,
+    },
+    cellularUpgrade: 1300,
+  }
+  const caculatePrice = () => {
+    if (size === 0) return 4399
+    let total = priceTable.basePrice[size as 11 | 13]
+    if (
+      ram !== '0' &&
+      priceTable.ramUpgrade[ram as keyof typeof priceTable.ramUpgrade]
+    ) {
+      total += priceTable.ramUpgrade[ram as keyof typeof priceTable.ramUpgrade]
+    }
+    if (web === 'cellular') {
+      total += priceTable.cellularUpgrade
+    }
+    return total
+  }
+  const calculateMonthly = (price: number) => {
+    return Math.round(price / 3)
+  }
+  const getRamPrice = (ramOption: string) => {
+    if (size === 0) return 4399
+    let price = priceTable.basePrice[size as 11 | 13]
+    price +=
+      priceTable.ramUpgrade[ramOption as keyof typeof priceTable.ramUpgrade]
+    if (web === 'cellular') {
+      price += priceTable.cellularUpgrade
+    }
+    return price
+  }
+  const getWebPrice = (webOption: string) => {
+    if (size === 0) return 4399
+    let price = priceTable.basePrice[size as 11 | 13]
+    if (ram !== '0') {
+      price += priceTable.ramUpgrade[ram as keyof typeof priceTable.ramUpgrade]
+    }
+
+    if (webOption === 'cellular') {
+      price += priceTable.cellularUpgrade
+    }
+    console.log({ size, ram, webOption, price })
+    return price
+  }
+  const currentPrice = caculatePrice()
+  const currentMonthly = calculateMonthly(currentPrice)
+  const navigate = useNavigate()
+  const canAdd = size !== 0 && ram !== '0' && web !== '0'
+  const handleAddCart = () => {
+    if (canAdd) {
+      navigate('/buyipadair/ipad-air')
     }
   }
   return (
@@ -129,14 +192,21 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
           <div className="left">
             {' '}
             <div className="buyname">{buyname}购买ipadAir</div>
-            <div className="buydesc">{discount}RMB 1466/月或 4399</div>
+            <div className="buydesc">
+              {discount}RMB {currentMonthly}/月或 {currentPrice || '4399'}
+            </div>
           </div>
           <div className="right">
             <div className="discount">折扣优惠RMB 225-RMB 6100 ＋</div>
             <div className="discount">可享最长 3 个月分期服务↗</div>
           </div>
         </ContentContainer>
-        <BuyTopBar name="ipad Air" price={9999} isVisible={visible}></BuyTopBar>
+        <BuyTopBar
+          name="ipad Air"
+          price={currentPrice}
+          monthly={currentMonthly}
+          isVisible={visible}
+        ></BuyTopBar>
         <BuyDetail>
           <div className="left">
             {' '}
@@ -164,8 +234,10 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
               >
                 <div className="lefttype">11英寸机型</div>
                 <div className="righttype">
-                  <h2>RMB 1466月起或</h2>
-                  <h2>RMB 4399起</h2>
+                  <h2>
+                    RMB {calculateMonthly(priceTable.basePrice[11])}/月起或
+                  </h2>
+                  <h2>RMB {priceTable.basePrice[11]}起</h2>
                 </div>
               </div>
               <div
@@ -174,8 +246,10 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
               >
                 <div className="lefttype">13英寸机型</div>
                 <div className="righttype">
-                  <h2>RMB 2033月起或</h2>
-                  <h2>RMB 6099起</h2>
+                  <h2>
+                    RMB {calculateMonthly(priceTable.basePrice[13])}/月起或
+                  </h2>
+                  <h2>RMB {priceTable.basePrice[13]}起</h2>
                 </div>
               </div>
             </div>
@@ -228,36 +302,48 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
             <div className="ram">
               <h1>存储容量： 选择你需要的存储空间。</h1>
               <div
-                className={`ramdesc ${ram === '64GB' ? 'active' : ''}`}
+                className={`ramdesc ${ram === '128GB' ? 'active' : ''}`}
                 onClick={() => changeRam('128GB')}
               >
                 <h2>128GB</h2>
-                <h3>RMB 1466/月起或</h3>
-                <h3>RMB 4399起</h3>
+                <h3>
+                  RMB {size ? calculateMonthly(getRamPrice('128GB')) : 1466}
+                  /月起或
+                </h3>
+                <h3>RMB {size ? getRamPrice('128GB') : 4399}起</h3>
               </div>
               <div
                 className={`ramdesc ${ram === '256GB' ? 'active' : ''}`}
                 onClick={() => changeRam('256GB')}
               >
                 <h2>256GB</h2>
-                <h3>RMB 1633/月起或</h3>
-                <h3>RMB 4899起</h3>
+                <h3>
+                  RMB {size ? calculateMonthly(getRamPrice('256GB')) : 1633}
+                  /月起或
+                </h3>
+                <h3>RMB {size ? getRamPrice('256GB') : 4899}起</h3>
               </div>
               <div
                 className={`ramdesc ${ram === '512GB' ? 'active' : ''}`}
                 onClick={() => changeRam('512GB')}
               >
                 <h2>512GB</h2>
-                <h3>RMB 2200/月起或</h3>
-                <h3>RMB 6599起</h3>
+                <h3>
+                  RMB {size ? calculateMonthly(getRamPrice('512GB')) : 2200}
+                  /月起或
+                </h3>
+                <h3>RMB {size ? getRamPrice('512GB') : 6599}起</h3>
               </div>
               <div
                 className={`ramdesc ${ram === '1TB' ? 'active' : ''}`}
                 onClick={() => changeRam('1TB')}
               >
                 <h2>1TB</h2>
-                <h3>RMB 2633/月起或</h3>
-                <h3>RMB 7899起</h3>
+                <h3>
+                  RMB {size ? calculateMonthly(getRamPrice('1TB')) : 2633}
+                  /月起或
+                </h3>
+                <h3>RMB {size ? getRamPrice('1TB') : 7899}起</h3>
               </div>
             </div>
             <div ref={nextSectionwebraf}></div>
@@ -272,7 +358,14 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
                   <h3>每部 iPad 都能连接无线局域网，让你时刻连线。</h3>
                 </div>
                 <div className="righttype">
-                  <h3>RMB 2,633/月或 RMB 7,899</h3>
+                  <h3>
+                    RMB{' '}
+                    {size !== 0
+                      ? `${calculateMonthly(
+                          getWebPrice('wifi')
+                        )}/月或 RMB ${getWebPrice('wifi')}`
+                      : '1,466/月或 RMB 4,399'}
+                  </h3>
                 </div>
               </div>
               <div
@@ -288,7 +381,14 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
                   </h3>
                 </div>
                 <div className="righttype">
-                  <h3>RMB 3,066/月或 RMB 9,199 </h3>
+                  <h3>
+                    RMB{' '}
+                    {size !== 0
+                      ? `${calculateMonthly(
+                          getWebPrice('cellular')
+                        )}/月或 RMB ${getWebPrice('cellular')}`
+                      : '1,900/月或 RMB 5,699'}{' '}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -303,10 +403,12 @@ const BuyPage: FC<Iprops> = ({ buyname, discount, images }) => {
                 fontSize: '16px',
                 fontWeight: '400',
                 marginBottom: '40px',
-                cursor: 'pointer',
+                cursor: canAdd ? 'pointer' : 'auto',
+                opacity: canAdd ? 1 : 0.5,
               }}
+              onClick={handleAddCart}
             >
-              继续
+              添加到购物袋
             </button>
 
             <div className="scroll-indicator">

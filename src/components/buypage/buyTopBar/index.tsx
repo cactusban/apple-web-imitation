@@ -5,9 +5,9 @@ interface Iprops {
   isVisible?: boolean
   price?: number
   name?: string
+  monthly?: number
 }
-const BuyTopBar: FC<Iprops> = ({ name, price, isVisible }) => {
-  const monthlyPrice = Math.round(Number((price ?? 0) / 3))
+const BuyTopBar: FC<Iprops> = ({ name, price, monthly, isVisible }) => {
   const today = new Date()
   const sunday = new Date(today)
   sunday.setDate(today.getDate() + (7 - today.getDay()))
@@ -58,8 +58,7 @@ const BuyTopBar: FC<Iprops> = ({ name, price, isVisible }) => {
         >
           <div style={{ fontSize: '23px', fontWeight: 'bold' }}>{name}</div>
           <div>
-            RMB {monthlyPrice.toLocaleString()}/月 (3 期) 或 RMB
-            {(price ?? 0).toLocaleString()}{' '}
+            RMB {monthly}/月 (3 期) 或 RMB {price} 起
           </div>
         </div>
         {/* 右侧配送信息 */}
